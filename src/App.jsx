@@ -3,9 +3,9 @@ import "./App.css";
 import Description from "./components/Description/Description";
 import Options from "./components/Options/Options";
 import Feedback from "./components/Feedback/Feedback";
+import Notification from "./components/Notification/Notification";
 
 const keyLS = "counterValue";
-const arrWords = ["Good", "Neutral", "Bad", "Reset"];
 function App() {
   const [counter, setCounter] = useState(
     () =>
@@ -30,19 +30,20 @@ function App() {
   };
 
   const totalFeedback = counter.good + counter.neutral + counter.bad;
+  const positiveFeedback = Math.round((counter.good / totalFeedback) * 100);
 
   return (
     <>
       <Description />
-      <Options
-        array={arrWords}
-        updateFeedback={updateFeedback}
-        totalFeedback={totalFeedback}
-      />
+      <Options updateFeedback={updateFeedback} totalFeedback={totalFeedback} />
       {totalFeedback === 0 ? (
-        <p>No feedback yet</p>
+        <Notification />
       ) : (
-        <Feedback counter={counter} totalFeedback={totalFeedback} />
+        <Feedback
+          counter={counter}
+          totalFeedback={totalFeedback}
+          positiveFeedback={positiveFeedback}
+        />
       )}
     </>
   );

@@ -1,30 +1,27 @@
 import Button from "../Button/Button";
 
-const Options = ({ array, updateFeedback, totalFeedback }) => (
+const Options = ({updateFeedback, totalFeedback }) => (
   <ul>
     <li>
       <Button
-        textBtn={array[0]}
         onClick={() => updateFeedback("good")}
-      ></Button>
+      >Good</Button>
     </li>
     <li>
       <Button
-        textBtn={array[1]}
         onClick={() => updateFeedback("neutral")}
-      ></Button>
+      >Neutral</Button>
     </li>
     <li>
-      <Button textBtn={array[2]} onClick={() => updateFeedback("bad")}></Button>
+      <Button onClick={() => updateFeedback("bad")}>Bad</Button>
     </li>
     {totalFeedback === 0 ? (
       ""
     ) : (
       <li>
         <Button
-          textBtn={array[3]}
           onClick={() => updateFeedback("reset")}
-        ></Button>
+        >Reset</Button>
       </li>
     )}
   </ul>

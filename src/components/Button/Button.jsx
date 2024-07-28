@@ -1,7 +1,6 @@
-const Button = ({ textBtn, onClick }) => (
-  <button type="button" onClick={onClick}>
-    {textBtn}
-  </button>
+
+const Button = ({ onClick, children}) => (
+  <button type="button" onClick={onClick}>{children}</button>
 );
 
 export default Button;
